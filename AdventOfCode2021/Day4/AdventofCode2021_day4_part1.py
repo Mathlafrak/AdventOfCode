@@ -2,59 +2,62 @@ import numpy as np
 import array
 data = open("day04.in", 'r')
 
+def numberListMaking():
+    numbers = []
+    for line in data:
+        ligne_intermediaire = line.split()
+        numbers.append(ligne_intermediaire)
 
-numbers = []
-for line in data:
-    ligne_intermediaire = line.split()
-    numbers.append(ligne_intermediaire)
+    string_called_numbers = numbers[0]
+    string_called_numbers = string_called_numbers[0].split(",")
 
-string_called_numbers = numbers[0]
-string_called_numbers = string_called_numbers[0].split(",")
-
-called_numbers = []
-for i in range(len(string_called_numbers)):
-    called_numbers.append(int(string_called_numbers[i]))
-j = 0
-bingoSlice = []
-bingoList = []
-for elements in called_numbers:
-    if len(bingoSlice) < 5:
-        bingoSlice.append(elements)
-        if len(bingoList) == 19:
+    called_numbers = []
+    for i in range(len(string_called_numbers)):
+        called_numbers.append(int(string_called_numbers[i]))
+    j = 0
+    bingoSlice = []
+    bingoList = []
+    for elements in called_numbers:
+        if len(bingoSlice) < 5:
+            bingoSlice.append(elements)
+            if len(bingoList) == 19:
+                bingoList.append(bingoSlice)
+        else :
             bingoList.append(bingoSlice)
-    else :
-        bingoList.append(bingoSlice)
-        bingoSlice = []
-        bingoSlice.append(elements)
-print(bingoList)
-del numbers[0]
-for lines in numbers:
-    if len(lines) == 0:
-        numbers.remove(lines)
+            bingoSlice = []
+            bingoSlice.append(elements)
+    print(bingoList)
+    del numbers[0]
+    for lines in numbers:
+        if len(lines) == 0:
+            numbers.remove(lines)
 
 
+numberListMaking()
 
+def boardMaking():
+    billBoards = []
+    board =[]
+    i = 0
+    K = 0
+    for element in numbers:
 
-billBoards = []
-board =[]
-i = 0
-K = 0
-for element in numbers:
+        intNumbers = []
+        for i in range(len(element)):
+            intNumbers.append(int(element[i]))
 
-    intNumbers = []
-    for i in range(len(element)):
-        intNumbers.append(int(element[i]))
-
-    if len(board) < 5:
-        board.append(intNumbers)
-        if len(billBoards) == 99 and len(board) == 5:
+        if len(board) < 5:
+            board.append(intNumbers)
+            if len(billBoards) == 99 and len(board) == 5:
+                billBoards.append(board)
+        else:
             billBoards.append(board)
-    else:
-        billBoards.append(board)
-        board = []
-        board.append(intNumbers)
+            board = []
+            board.append(intNumbers)
 
-#print(billBoards)
+            
+boardMaking()            
+    #print(billBoards)
 #  bill_boards [0]     [1]   [0]
 #            [index]   [y]   [x]
 
