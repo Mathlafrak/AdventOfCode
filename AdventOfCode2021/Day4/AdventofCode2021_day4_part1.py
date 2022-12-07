@@ -3,18 +3,21 @@ import array
 data = open("day04.in", 'r')
 
 def numberListMaking():
+    global numbers
     numbers = []
+    global bingoList
     for line in data:
         ligne_intermediaire = line.split()
         numbers.append(ligne_intermediaire)
 
     string_called_numbers = numbers[0]
     string_called_numbers = string_called_numbers[0].split(",")
+    print(string_called_numbers)
 
     called_numbers = []
     for i in range(len(string_called_numbers)):
         called_numbers.append(int(string_called_numbers[i]))
-    j = 0
+
     bingoSlice = []
     bingoList = []
     for elements in called_numbers:
@@ -26,16 +29,17 @@ def numberListMaking():
             bingoList.append(bingoSlice)
             bingoSlice = []
             bingoSlice.append(elements)
-    print(bingoList)
+
     del numbers[0]
     for lines in numbers:
         if len(lines) == 0:
             numbers.remove(lines)
 
-
+    print(numbers)
 numberListMaking()
 
 def boardMaking():
+    global billBoards
     billBoards = []
     board =[]
     i = 0
