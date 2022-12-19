@@ -1,4 +1,4 @@
-annexe = open("day03.txt", "r")
+annexe = open("/home/g700830/Workspace/AdventofCode/AdventOfCode2021/Day3/day03.txt", 'r')
 
 data = [x for x in annexe.read().split("\n")]
 print(data)
@@ -26,8 +26,8 @@ while len(data) >1:
     un = 0
     zero = 0
     uns = []
-    zeros = []
-    for element in range(0, len(data)):
+    zeros = [] #Evite d'etre un crado construit Reset()
+    for element in range(len(data)):
         if data[element][position] == "0":
             zero += 1
             zeros.append(data[element])
@@ -39,9 +39,11 @@ while len(data) >1:
     else :
         data = uns
     position += 1
+
 oxygen_bit = int(data[0], 2)
 print(oxygen_bit)
 
+ 
 position = 0
 data = second_data
 while len(data) >1:

@@ -13,14 +13,14 @@ for mouvements in annexes:
                 mouvementX = mouvementX + int_char
                 depth = depth + aim * int_char
 
-    if "up" in mouvements:
+    elif "up" in mouvements:
         for character in mouvements:
             if character.isdigit():
                 int_char = int(character)
                 aim = aim - int_char
 
 
-    if "down" in mouvements:
+    else:
         for character in mouvements:
             if character.isdigit():
                 int_char = int(character)

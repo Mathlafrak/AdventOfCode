@@ -1,3 +1,5 @@
+
+
 def main():
     annexe = open("day01.in", "r")
     list_annexe = [int(i) for i in annexe.read().strip().split("\n")]
@@ -10,7 +12,7 @@ def main():
     print(compteur)
 
     compteur_fenetre = 0
-
+    print(len(list_annexe))
     j = 0
     while j <= 1996:
         print("Iteration numero", j)
