@@ -1,4 +1,4 @@
-annexe = open("/home/g700830/Workspace/AdventofCode/AdventOfCode2021/Day3/day03.txt", "r")
+annexe = open("day03.txt", "r")
 
 data = [x for x in annexe.read().split("\n")]
 
@@ -33,11 +33,13 @@ def GetPower2(rate):
     for bits in range(len(rate)):
         rate[bits] = rate[bits]*pow(2,len(rate)-bits -1)
     return rate
-print(GetPower2(gama_rate))
-print(GetPower2(epsilon_rate))
-print(sum(GetPower2(gama_rate)))
-Result_Gama = sum(GetPower2(gama_rate))
-Result_Epsilon = sum(GetPower2(epsilon_rate))
-print(f' Result is Result_Gama * Result_Epsilon = {Result_Gama}*{Result_Epsilon} = ', Result_Gama*Result_Epsilon)
+
+Gamma = GetPower2(gama_rate)
+Epsilon = GetPower2(epsilon_rate)
+
+Result_Gama = sum(Gamma)
+Result_Epsilon = sum(Epsilon)
+
+print(f' Result is Result_Gama * Result_Epsilon = {Result_Gama} * {Result_Epsilon} = ', Result_Gama*Result_Epsilon)
 
 

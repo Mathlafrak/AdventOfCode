@@ -7,38 +7,23 @@ for lines in data:
         lines = lines.replace('\n', '')
         group.append(lines)
         if len(input) == 99:
-            input.append(set(group))
+            input.append(group)
     else:
-        input.append(set(group))
+        input.append(group)
         group = []
         group.append(lines)
 
 print(input)
-
-#
-#
-#
-#
-# def SplitWord(string):
-#     global finding
-#     finding = []
-#     global bag
-#     cut = int(len(string)/2)
-#
-#     finding.append(set(string[:cut]))
-#     finding.append(set(string[cut:]))
-#
-#     return finding
-#
-#     # print(finding)
-# compteur = 0
+input = [set(s) for s in input]
+print(input)
 def GetPriority(list):
     global compteur
     global priority
     letter = []
-    priority = list[0][0].intersection(list[0][1], list[0][2])
-    priority = " ".join(priority)
-    print(priority)
+
+    common = set.intersection(*map(set, list[0]))
+   
+    print(common)
 
 GetPriority(input)
     # if priority in ALPHABET:

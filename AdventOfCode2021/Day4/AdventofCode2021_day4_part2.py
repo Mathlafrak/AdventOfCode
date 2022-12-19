@@ -54,7 +54,6 @@ for element in numbers:
         board = []
         board.append(intNumbers)
 
-#print(billBoards)
 #  bill_boards [0]     [1]   [0]
 #            [index]   [y]   [x]
 
