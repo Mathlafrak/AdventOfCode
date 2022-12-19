@@ -1,5 +1,3 @@
-
-import math
 data = open("day07_2021.txt", 'r')
 data = data.readline().split(",")
 print(data)
@@ -7,31 +5,22 @@ for element in range(len(data)):
     data[element] = int(data[element])
 
 
-a = max(data) #1940
-L = [0]*a
-print(L)
-fuelListe = []
-liste = []
-for indice in range(len(L)):
+def GetMinimum():
+    global indice
+    a = len(data) #1940
+    L = [0] * a
+
     for element in range(len(data)):
-        fuel = 0
-        i = 0
+        for numbers in range(len(data)):
+            L[element] += abs(element - data[numbers])
 
-        if data[element] > indice:
-            while data[element] - i != indice:
-                fuel += i
-                i += 1
-        if data[element] < indice:
-            while data[element] + i != indice:
-                fuel += i
-                i += 1
-        fuelListe.append(fuel)
+    indice = L.index(min(L))
 
-print(min(fuel))
-print(L.index(min(L)))
+GetMinimum()
+def GetResult():
+    fuel = 0
+    for element in data:
+        fuel += abs(element - indice)
+    print(fuel)
 
-
-
-print(fuel)
-
-
+GetResult()

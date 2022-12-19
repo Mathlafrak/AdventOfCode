@@ -20,7 +20,7 @@ def TimeCounting(list):
 
 def Calculating(list):
 
-    for days in range (256):
+    for days in range (80):
         next = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
         print("GO")

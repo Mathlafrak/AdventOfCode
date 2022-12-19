@@ -18,12 +18,10 @@ def SplitWord(string):
 
     return finding
 
-    # print(finding)
 compteur = 0
 def GetPriority(list):
     global compteur
     global priority
-    letter = []
     priority = list[0].intersection(list[1])
     priority = " ".join(priority)
 
@@ -36,8 +34,7 @@ def GetPriority(list):
 
 alphabet = string.ascii_lowercase
 ALPHABET = string.ascii_uppercase
-# print(alphabet)
-# print(ALPHABET)
+
 
 for element in range(len(input)):
     GetPriority(SplitWord(input[element]))

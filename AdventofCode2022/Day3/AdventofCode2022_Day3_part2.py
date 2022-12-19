@@ -7,9 +7,9 @@ for lines in data:
         lines = lines.replace('\n', '')
         group.append(lines)
         if len(input) == 99:
-            input.append(group)
+            input.append(set(group))
     else:
-        input.append(group)
+        input.append(set(group))
         group = []
         group.append(lines)
 
@@ -36,11 +36,11 @@ def GetPriority(list):
     global compteur
     global priority
     letter = []
-    priority = list[0].intersection(list[1], list[2])
+    priority = list[0][0].intersection(list[0][1], list[0][2])
     priority = " ".join(priority)
     print(priority)
 
-
+GetPriority(input)
     # if priority in ALPHABET:
     #     compteur += 27 + ALPHABET.index(priority)
     # else:
@@ -52,7 +52,7 @@ def GetPriority(list):
 # # print(alphabet)
 # # print(ALPHABET)
 #
-for element in range(len(input)):
-    GetPriority(input)
-# print(compteur)
+# for element in range(len(input)):
+#     GetPriority(input[element])
+# # print(compteur)
 
