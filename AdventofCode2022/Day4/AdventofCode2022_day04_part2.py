@@ -27,10 +27,12 @@ for mooves in transit:
         compteur += 1
     elif a <= c and b >= d:
         compteur += 1
-    elif a <= c and b <= d:
+    elif a <= c and b >= c:
         compteur += 1
-    elif a >= c and b >= d:
+    elif a >= c and a <= d:
         compteur += 1
+    else:
+        compteur = compteur 
 
 
 

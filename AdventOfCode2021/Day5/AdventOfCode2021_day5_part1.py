@@ -16,7 +16,7 @@ for moves in data:
         board = (x, y)
         if len(movesList) < 2:
             movesList.append(board)
-            if len(GenralList) == 499:
+            if len(GenralList) == len(moves) - 1:
 
                 GenralList.append(movesList)
         else:
