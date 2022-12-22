@@ -49,14 +49,12 @@ def checkEasyCase():
 
 lenEasy = [2, 3, 4, 7]
 
-def BuildEasyTuples():
-    global EasyTuple
-    one = [1,2,['a','b']] # number = [int, len,[l,e,t,t,e,r,s]]
-    four = [4,4,['a','b','e','f']]
-    seven = [7,3,['d','a','b']]
-    eight = [8,7,['a','b','c','d','e','f','g']]
-    EasyTuples = [one, four, seven, eight]
-    return EasyTuples
+
+one = [1,2,['a','b']] # number = [int, len,[l,e,t,t,e,r,s]]
+four = [4,4,['a','b','e','f']]
+seven = [7,3,['d','a','b']]
+eight = [8,7,['a','b','c','d','e','f','g']]
+EasyTuples = [one, four, seven, eight]
 
 
 def GetEasyOnes(line):
@@ -86,10 +84,14 @@ def GetCharactersOfNumber(number): #Get the model list of characters of the numb
     return CharacterList    
 
 def GetRightCharacter(number, character):
+    global lawTuple
+    global Laws
+    Laws = []
     for chars in range(len(number[2])):
-        if character != chars and character not in number[2]:
-            chara
-        else:
-            character
-
+        if character != number[2][chars] and character not in number[2]:
+            lawTuple = (character, number[2][chars])
+            Laws.append(lawTuple)
+            character == number[2][chars]
+    return Laws
+            
 
