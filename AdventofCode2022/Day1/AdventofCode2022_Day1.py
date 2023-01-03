@@ -1,4 +1,4 @@
-data = open("day01_2022.in", "r")
+data = open("/home/g700830/Workspace/AdventofCode/AdventofCode2022/Day1/day01_2022.in", "r")
 
 datas = data.read().split("\n\n")
 print(datas)
