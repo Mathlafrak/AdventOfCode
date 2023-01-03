@@ -1,6 +1,6 @@
 import copy
 
-data = open("/home/g700830/Workspace/AdventofCode/AdventOfCode2021/Day8/day08_2021.txt", 'r')
+data = open("day08_2021.txt", 'r')
 input = data.readlines()
 def Organize():
     global focus
@@ -18,7 +18,7 @@ def Organize():
         firstFocus.append(firstStrings)
 
 Organize()
-# print(firstFocus)
+print(firstFocus)
 def checkEasyCase():
     global compteur
     compteur = 0
@@ -66,24 +66,29 @@ def GetEasyOnes(line):
     return EasyOnes
 
 def IdentifyFromLen(element):
+    global number
     for numbers in range(len(EasyTuples)):
         if len(element) == EasyTuples[numbers][1]:
-            number =  EasyTuples[numbers].deepcopy()
-    return number
+            number = EasyTuples[numbers].copy()
+            print("got it ")
+            return number
+        else:
+            print("Unknown number")
 
 def GetLawsFromEasy(Easytable): #Easytable contains the easy digits
+
     for element in range(len(Easytable)):
         number = IdentifyFromLen(Easytable[element])
         for wrongCharacter in Easytable[element]:
-            
+
             if wrongCharacter not in number[2]:
-                GetRightCharacter(number, wrongCharacter)
+                GetRightCharacter(firstFocus[0], wrongCharacter)
 
 def GetCharactersOfNumber(number): #Get the model list of characters of the number
     CharacterList = number[2]
     return CharacterList    
 
-def GetRightCharacter(number, character):
+def GetRightCharacter(string, character):
     global lawTuple
     global Laws
     Laws = []
@@ -91,7 +96,9 @@ def GetRightCharacter(number, character):
         if character != number[2][chars] and character not in number[2]:
             lawTuple = (character, number[2][chars])
             Laws.append(lawTuple)
-            character == number[2][chars]
+            string[chars].replace(character, number[2][chars])
+            print(character)
     return Laws
             
 
+GetLawsFromEasy(firstFocus)
