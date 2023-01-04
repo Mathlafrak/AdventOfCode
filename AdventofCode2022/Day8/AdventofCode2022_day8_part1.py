@@ -41,7 +41,7 @@ def CheckUp(lign , column):
     currentList = []
     element = field[lign][column]
     
-    for lignes in range(lign + 1):
+    for lignes in range(lign + 1): # +1 Car sinon on atteint pas la derniere valeure, celle qu'on veut comparer 
         currentList.append(field[lignes][column])
     maxHeight = max(currentList)
     if element == maxHeight and currentList.count(max(currentList)) == 1:
@@ -53,9 +53,9 @@ def CheckDown(lign, column):
     currentList = []
     element = field[lign][column]
     
-    currentLign = len(field[lign]) - lign -1
-    for lignes in range(currentLign + 1):
-        currentList.append(field[-lignes][column])
+    currentLign = len(field[lign]) - lign #On cherche à remonter la colonne depuis le bas 
+    for lignes in range(currentLign):
+        currentList.append(field[-lignes - 1][column]) # Dans ce meme objectif, on -1 car sinon premiere valeure sera -0 (premiere valeure, aucun sens)
     print(element)
     print(currentList)
     maxHeight = max(currentList)
@@ -69,7 +69,7 @@ def CheckDown(lign, column):
 def Check(lign, trees):
     global compteur
 
-    if lign == 0 or lign == len(field[lign]) -1 or trees == 0 or trees == len(field[lign])-1:
+    if lign == 0 or lign == len(field[lign]) -1 or trees == 0 or trees == len(field[lign])-1:  # len() -1 car sinon out of range 
         compteur = compteur + 1
         print(f' localisation : {lign} + {trees})')
         return
