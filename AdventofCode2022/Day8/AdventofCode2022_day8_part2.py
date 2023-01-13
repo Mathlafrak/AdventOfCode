@@ -54,7 +54,6 @@ def CheckLeft(lign, column):
 
 
 def CheckRight(lign, column):
-    direction = RightCheck
     element = field[lign][column]
     if LimitCheck(lign,column + 1):
         NextElement = [field[lign][column + 1], lign, column]
@@ -68,11 +67,10 @@ def CheckRight(lign, column):
 def Compare(element, NextElement, direction):
     if element > NextElement[0]:
         direction += 1
-        return True
+        return True, direction 
     elif element <= NextElement[0]: 
-        return Stop(direction)
-    else:
         return False
+    
 
 def Stop(direction):
     direction = direction + 1
@@ -89,16 +87,21 @@ def LimitCheck(lign, column):
 
 def Check(lign, column):
 
-    if lign == 0 or lign == len(field[lign]) -1 or column == 0 or column == len(field[lign])-1:  # len() -1 car sinon out of range 
-        Result = 0
+    if lign == 0:
+        UpCheck = 0
+        return UpCheck
+    elif lign == len(field[lign]) -1:
+        DownCheck = 0
+        return DownCheck 
+    elif column == 0:
+        LeftCheck = 0
+        return LeftCheck
+    elif column == len(field[lign])-1:  # len() -1 car sinon out of range 
+        RightCheck = 0
+        return RightCheck
     else:
-        CheckDown(lign, column)
-
-        CheckUp(lign, column)
-
-        CheckLeft(lign, column)
-
-        CheckRight(lign, column)
+        Result = (CheckDown(lign, column) * CheckUp(lign, column) * CheckLeft(lign, column) * CheckRight(lign, column))
+        return Result
 
 def Initialize():
     global Result
@@ -114,12 +117,10 @@ def Initialize():
 Initialize()        
 Results = []
 for lines in range(len(field)):
-    for column in range(len(field[lines])):
-        Check(lines, column)  
-        Result = DownCheck * UpCheck * LeftCheck * RightCheck 
-        Results.append(Result)
+    for column in range(len(field[lines])):  
+        Results.append(Check(lines, column))
         # print(f' Down : {DownCheck}, Up : {UpCheck}, Left : {LeftCheck}, Right : {RightCheck}')
-        print(Result)
+        print(Results)
         
 print(compteur)
 
